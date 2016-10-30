@@ -48,7 +48,7 @@ public class Application {
 
 
     after((req, res) -> {
-      if (res.body() == null) { // if the route didn't return anything
+      if (res.body() == null && !req.contextPath().contains("/json")) { // if the route didn't return anything or json path
         res.body(renderTodos(req));
       }
     });
